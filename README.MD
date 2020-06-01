@@ -140,7 +140,7 @@ Output
 
 ![alt text][logo]
 
-[logo]: /img/sample.png "Sample output"
+[logo]: /sample.png "Sample output"
 
 ## Reference
 - Tokenizer structure and AST structure: professor Alex Summers' [code for TinyVars from class](http://www.students.cs.ubc.ca/~cs-410/repos/tinyVars-complete.zip)

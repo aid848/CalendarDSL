@@ -21,6 +21,7 @@ public class Scheduler implements FlexibleEventAllocatable {
         for(int i = 1;  i < 8; i++){
             Calendar startOfTheDay = Util.nextDayOfWeek(i);
             Util.setTime(startOfTheDay,6);
+//            Util.printCalendar(startOfTheDay);
             days.add(new Day(startOfTheDay));
         }
         flexibleEventList = new ArrayList<>();
@@ -28,6 +29,7 @@ public class Scheduler implements FlexibleEventAllocatable {
 
     public void addEvent(IndividualEvent event){
         int dayOfWeek = event.getDayOfWeek();
+//        System.out.println("Individual");
 //        Util.printCalendar(event.getStart());
 //        Util.printCalendar(event.getEnd());
         days.get(dayOfWeek-1).addEvent(event);
@@ -82,33 +84,7 @@ public class Scheduler implements FlexibleEventAllocatable {
                     break;
                 }
             }
-            if (!allocated) {
-                throw new RuntimeException("Not enough time for event "+ flexibleEvent.toString());
-            }
-        }
-    }
-
-    private enum DaysOfWeek {
-        SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-        THURSDAY, FRIDAY, SATURDAY
-    }
-
-
-
-    public void print(){
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:");
-        String indent = "   ";
-        for(int i = 0; i < 7; i++){
-            System.out.println(DaysOfWeek.values()[i] + "\n" + "---------------------------");
-            List<Event> events = this.days.get(i).getEvents();
-            for(Event e: events) {
-                String end = "";
-                if (e.getEnd() != null) {
-                }
-                    System.out.println(indent + "Event " + e.getName() + ": " + formatter.format(e.getStart().getTime()) + "-" + formatter.format(e.getEnd().getTime()));
-                    System.out.println(indent + indent + "Location: " + e.getLocation());
-                    System.out.println(indent + indent + "Description: " + e.getDescription());
-            }
+//            throw new RuntimeException("Not enough time for event "+ flexibleEvent.toString());
         }
     }
 }
